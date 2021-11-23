@@ -1,0 +1,14 @@
+{
+  "name": "skripsi_joshua",
+  "version": "1.0.0",
+  "description": "Visualisasi Kurikulum",
+  "main": "main.js",
+  "scripts": {
+	"start": "electron ."
+  },
+  "author": "Joshua Delavo",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^16.0.0"
+  }
+}
