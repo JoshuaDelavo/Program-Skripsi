@@ -35,8 +35,16 @@ function tree (){
     };
     var options = {
         nodes: {
-            shape: 'dot'
+            shape: "box",
+            margin: 10,
+            widthConstraint: {
+                maximum: 110,
+            },
         },
+        hierarchical: {
+            direction: "UD",
+            sortMethod: "directed",
+          },
         physics: false,
         edges: {
             smooth: false
@@ -54,6 +62,7 @@ function tree (){
         for (i = 1; i < 9; i++) {
             nodes.add([{
                 id: i, label: "Semester" + i, group: i, x:-50, y: i*150
+                // id: i, label: "Semester" + i, group: i
             }])
             if (i == 8) {
 
@@ -70,25 +79,26 @@ function tree (){
             horizontal[matkul[i].semester] += 200; 
             nodes.add([{
                 id: matkul[i].kode, label: matkul[i].nama, group: matkul[i].semester, x:horizontal[matkul[i].semester], y: matkul[i].semester*150 
+                // id: matkul[i].kode, label: matkul[i].nama, group: matkul[i].semester
             }])
             if(matkul[i].prasyarat.tempuh.length != 0){
                 for (let j = 0; j < matkul[i].prasyarat.tempuh.length; j++){
                     edges.add([
-                        { from: matkul[i].kode, to: matkul[i].prasyarat.tempuh[j] }
+                        { from: matkul[i].kode, to: matkul[i].prasyarat.tempuh[j], arrows: "from"}
                     ])
                 }
             }
             if(matkul[i].prasyarat.lulus.length != 0){
                 for (let j = 0; j < matkul[i].prasyarat.lulus.length; j++){
                     edges.add([
-                        { from: matkul[i].kode, to: matkul[i].prasyarat.lulus[j] }
+                        { from: matkul[i].kode, to: matkul[i].prasyarat.lulus[j], dashes: true }
                     ])
                 }
             }
             if(matkul[i].prasyarat.bersamaan.length != 0){
                 for (let j = 0; j < matkul[i].prasyarat.bersamaan.length; j++){
                     edges.add([
-                        { from: matkul[i].kode, to: matkul[i].prasyarat.bersamaan[j] }
+                        { from: matkul[i].kode, to: matkul[i].prasyarat.bersamaan[j], arrows: "from", dashes: true }
                     ])
                 }
             }
