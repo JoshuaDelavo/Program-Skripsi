@@ -1,4 +1,4 @@
-function time(){
+function processTimeline(){
   document.getElementById("network").style.display="none"
   document.getElementById("timeline").style.display="inline"
   let matkul = ''
@@ -22,27 +22,25 @@ function time(){
         { id: 2, content: "Mata Kuliah Pilihan" },
       ]);
 
-      let yyyy=new Date().getFullYear();
-      let mm = new Date().getMonth();
-      if(mm<7){
-        yyyy-=1
-        mm=7
+      let tahun=new Date().getFullYear();
+      let bulan = new Date().getMonth();
+      if(bulan<7){
+        tahun-=1
+        bulan=7
       }
       else{
-        mm=7
+        bulan=7
       }
 
       let semester=[]
       for(i=1;i<=9;i++){
-          semester[i]= yyyy.toString()+"-"+mm.toString()+"- 31"
+          semester[i]= tahun.toString()+"-"+bulan.toString()+"- 31"
           if(i%2!=0){
-            mm+=5
-            console.log(semester[i])
+            bulan+=5
           }
           else{
-            mm-=5
-            yyyy+=1
-            console.log(semester[i])
+            bulan-=5
+            tahun+=1
           }
       }
 

@@ -1,4 +1,4 @@
-function tree (){
+function processNetwork (){
     document.getElementById("timeline").style.display="none"
     document.getElementById("network").style.display="inline"
     let matkul = '';
@@ -23,7 +23,6 @@ function tree (){
     var edges = new vis.DataSet();
 
     function createNetwork() {
-        let text = "";
         const horizontal = [];
         for (i = 1; i < 9; i++) {
             nodes.add([{
@@ -58,21 +57,24 @@ function tree (){
             if(matkul[i].prasyarat.tempuh.length != 0){
                 for (let j = 0; j < matkul[i].prasyarat.tempuh.length; j++){
                     edges.add([
-                        { from: matkul[i].kode, to: matkul[i].prasyarat.tempuh[j], arrows: "from"}
+                        { from: matkul[i].kode, to: matkul[i].prasyarat.tempuh[j], 
+                          arrows: "from"}
                     ])
                 }
             }
             if(matkul[i].prasyarat.lulus.length != 0){
                 for (let j = 0; j < matkul[i].prasyarat.lulus.length; j++){
                     edges.add([
-                        { from: matkul[i].kode, to: matkul[i].prasyarat.lulus[j], dashes: true }
+                        { from: matkul[i].kode, to: matkul[i].prasyarat.lulus[j], 
+                          dashes: true }
                     ])
                 }
             }
             if(matkul[i].prasyarat.bersamaan.length != 0){
                 for (let j = 0; j < matkul[i].prasyarat.bersamaan.length; j++){
                     edges.add([
-                        { from: matkul[i].kode, to: matkul[i].prasyarat.bersamaan[j], arrows: "from", dashes: true }
+                        { from: matkul[i].kode, to: matkul[i].prasyarat.bersamaan[j], 
+                          arrows: "from", dashes: true }
                     ])
                 }
             }
