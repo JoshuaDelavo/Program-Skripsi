@@ -1,8 +1,8 @@
 function tree (){
     document.getElementById("timeline").style.display="none"
     document.getElementById("network").style.display="inline"
-    //variable matkul
-    let matkul = ''
+    let matkul = '';
+    
     const fetchUsers = async () => {
         try {
             const res = await fetch('https://raw.githubusercontent.com/ftisunpar/data/master/prasyarat.json');
@@ -17,7 +17,6 @@ function tree (){
             console.log(error);
         }
     }
-    
 
     // create an array with nodes
     var nodes = new vis.DataSet();
@@ -35,16 +34,11 @@ function tree (){
     };
     var options = {
         nodes: {
-            shape: "box",
             margin: 10,
             widthConstraint: {
                 maximum: 110,
             },
         },
-        hierarchical: {
-            direction: "UD",
-            sortMethod: "directed",
-          },
         physics: false,
         edges: {
             smooth: false
@@ -62,7 +56,6 @@ function tree (){
         for (i = 1; i < 9; i++) {
             nodes.add([{
                 id: i, label: "Semester" + i, group: i, x:-50, y: i*150
-                // id: i, label: "Semester" + i, group: i
             }])
             if (i == 8) {
 
@@ -76,11 +69,20 @@ function tree (){
         }
         
         for (let i = 0; i < matkul.length; i++) {
+            let shape=""
+            if(matkul[i].wajib){
+                shape="box"
+            }
+            else{
+                shape="circle"
+            }
+
             horizontal[matkul[i].semester] += 200; 
             nodes.add([{
-                id: matkul[i].kode, label: matkul[i].nama, group: matkul[i].semester, x:horizontal[matkul[i].semester], y: matkul[i].semester*150 
-                // id: matkul[i].kode, label: matkul[i].nama, group: matkul[i].semester
+                id: matkul[i].kode, label: matkul[i].nama, group: matkul[i].semester, 
+                x:horizontal[matkul[i].semester], y: matkul[i].semester*150, shape:shape 
             }])
+
             if(matkul[i].prasyarat.tempuh.length != 0){
                 for (let j = 0; j < matkul[i].prasyarat.tempuh.length; j++){
                     edges.add([
@@ -103,8 +105,6 @@ function tree (){
                 }
             }
         }
-        // console.log(horizontal);
-        // console.log(nodes);
     }
     fetchUsers();
 }
