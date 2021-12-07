@@ -2,7 +2,6 @@ function tree (){
     document.getElementById("timeline").style.display="none"
     document.getElementById("network").style.display="inline"
     let matkul = '';
-    
     const fetchUsers = async () => {
         try {
             const res = await fetch('https://raw.githubusercontent.com/ftisunpar/data/master/prasyarat.json');
@@ -11,8 +10,7 @@ function tree (){
             }
             const data = await res.json();
             matkul = data;
-            // console.log(matkul);
-            process();
+            createNetwork();
         } catch (error) {
             console.log(error);
         }
@@ -24,33 +22,7 @@ function tree (){
     // create an array with edges
     var edges = new vis.DataSet();
 
-    // create a network
-    var container = document.getElementById('network');
-
-    // provide the data in the vis format
-    var data = {
-        nodes: nodes,
-        edges: edges
-    };
-    var options = {
-        nodes: {
-            margin: 10,
-            widthConstraint: {
-                maximum: 110,
-            },
-        },
-        physics: false,
-        edges: {
-            smooth: false
-        },
-    };
-
-    // initialize your network!
-    var network = new vis.Network(container, data, options);
-
-    // Get data from API
-    
-    function process() {
+    function createNetwork() {
         let text = "";
         const horizontal = [];
         for (i = 1; i < 9; i++) {
@@ -107,4 +79,29 @@ function tree (){
         }
     }
     fetchUsers();
+
+    // create a network
+    var container = document.getElementById('network');
+
+    // provide the data in the vis format
+    var data = {
+        nodes: nodes,
+        edges: edges
+    };
+
+    var options = {
+        nodes: {
+            margin: 10,
+            widthConstraint: {
+                maximum: 110,
+            },
+        },
+        physics: false,
+        edges: {
+            smooth: false
+        },
+    };
+
+    // initialize your network!
+    var network = new vis.Network(container, data, options);
 }
