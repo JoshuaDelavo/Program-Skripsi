@@ -26,12 +26,9 @@ function processNetwork (){
         const horizontal = [];
         for (i = 1; i < 9; i++) {
             nodes.add([{
-                id: i, label: "Semester" + i, group: i, x:-50, y: i*150
+                id: i, label: "Semester " + i, group: i, y: i*150
             }])
-            if (i == 8) {
-
-            }
-            else {
+            if (i != 8) {
                 edges.add([
                     { from: i, to: i + 1 }
                 ])
