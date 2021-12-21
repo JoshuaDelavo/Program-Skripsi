@@ -1,14 +1,25 @@
 {
-  "name": "Visualisasi-Kurikulum",
+  "name": "VisKur",
   "version": "1.0.0",
   "description": "Visualisasi Kurikulum",
   "main": "main.js",
   "scripts": {
-	"start": "electron ."
+    "start": "electron .",
+    "dist": "electron-builder"
   },
   "author": "Joshua Delavo",
   "license": "MIT",
   "devDependencies": {
-    "electron": "^16.0.0"
+    "electron": "^16.0.0",
+    "electron-builder": "^22.14.5"
+  },
+  "build": {
+    "appId": "com.skripsi",
+    "productName": "Visualisasi-Kurikulum",
+    "target": "NSIS",
+    "nsis": {
+      "allowToChangeInstallationDirectory": true,
+      "oneClick": false
+    }
   }
 }

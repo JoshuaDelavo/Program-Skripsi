@@ -92,7 +92,7 @@ function processNetwork (){
         nodes: {
             margin: 10,
             widthConstraint: {
-                maximum: 110,
+                maximum: 120,
             },
         },
         physics: false,
