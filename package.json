@@ -4,22 +4,11 @@
   "description": "Visualisasi Kurikulum",
   "main": "main.js",
   "scripts": {
-    "start": "electron .",
-    "dist": "electron-builder"
+    "start": "electron ."
   },
   "author": "Joshua Delavo",
   "license": "MIT",
   "devDependencies": {
-    "electron": "^16.0.0",
-    "electron-builder": "^22.14.5"
-  },
-  "build": {
-    "appId": "com.skripsi",
-    "productName": "Visualisasi-Kurikulum",
-    "target": "NSIS",
-    "nsis": {
-      "allowToChangeInstallationDirectory": true,
-      "oneClick": false
-    }
+    "electron": "^16.0.0"
   }
 }
