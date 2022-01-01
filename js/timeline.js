@@ -45,7 +45,7 @@ function processTimeline(){
       }
 
       var res = [];
-      let color=["","lightBlue","yellow","red","green","pink","purple","orange","darkBlue"]
+      let color=["","semester1","semester2","semester3","semester4","semester5","semester6","semester7","semester8"]
       for (var i = 0; i < matkul.length; i++) {
           let wajib=''
           if(matkul[i].wajib){

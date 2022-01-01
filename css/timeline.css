@@ -1,0 +1,49 @@
+.vis-item.semester1 {
+    background-color: rgb(151, 194, 252);
+    border-color: rgb(43, 124, 233);
+    color: black;
+    box-shadow: 0 0 10px gray;
+  }
+.vis-item.semester2 {
+    background-color: rgb(255,255,0);
+    border-color:rgb(255,165,0);
+    color: black;
+    box-shadow: 0 0 10px gray;
+  }
+.vis-item.semester3 {
+  background-color: rgb(251,126,129);
+  border-color: rgb(251,70,74);
+  color: black;
+  box-shadow: 0 0 10px gray;
+}
+.vis-item.semester4 {
+  background-color: rgb(123,225,65);
+  border-color: rgb(76,177,19);
+  color: black;
+  box-shadow: 0 0 10px gray;
+}
+.vis-item.semester5 {
+  background-color: rgb(235,125,244);
+  border-color: rgb(225,41,240);
+  color: black;
+  box-shadow: 0 0 10px gray;
+}
+.vis-item.semester6 {
+  background-color: rgb(173,133,228);
+  border-color: rgb(124,41,240);
+  color: black;
+  box-shadow: 0 0 10px gray;
+}
+.vis-item.semester7 {
+  background-color: rgb(255,168,7);
+  border-color: rgb(217,142,3);
+  color: black;
+  box-shadow: 0 0 10px gray;
+}
+.vis-item.semester8 {
+  background-color: rgb(110,110,253);
+  border-color: rgb(68,35,251);
+  color: black;
+  box-shadow: 0 0 10px gray;
+}
+  
