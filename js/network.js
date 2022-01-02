@@ -1,6 +1,9 @@
 function processNetwork (){
+    //Untuk mengambil elemen html berdasarkan id
     document.getElementById("timeline").style.display="none"
     document.getElementById("network").style.display="inline"
+
+    //mengambil data kurikulum dari api yang kemudian dimasukkan ke dalam variable matkul
     let matkul = '';
     const fetchUsers = async () => {
         try {
@@ -16,13 +19,16 @@ function processNetwork (){
         }
     }
 
-    // create an array with nodes
+    // membuat variable nodes dengan tipe data vis.dataset
     var nodes = new vis.DataSet();
 
-    // create an array with edges
+    // membuat variable edges dengan tipe data vis.dataset
     var edges = new vis.DataSet();
 
+    //membuat visualisasi dalam bentuk network
     function createNetwork() {
+        // Menambahkan node dari semester 1 sampai semester 8 ke dalam variable nodes 
+        // beserta garisnya ke dalam variable edges
         const horizontal = [];
         for (i = 1; i < 9; i++) {
             nodes.add([{
@@ -36,7 +42,9 @@ function processNetwork (){
             horizontal[i] = 0;
         }
         
+        //memasukkan data yang diambil dari API ke dalam variable edges dan nodes
         for (let i = 0; i < matkul.length; i++) {
+            //mengatur bentuk node menjadi kotak dan lingkaran untuk membedakan matkul wajib dan pilihan
             let shape=""
             if(matkul[i].wajib){
                 shape="box"
@@ -45,12 +53,15 @@ function processNetwork (){
                 shape="circle"
             }
 
-            horizontal[matkul[i].semester] += 200; 
+            //mengatur jarak tampilan setiap semesternya
+            horizontal[matkul[i].semester] += 200;
+            //memasukkan data matkul yang diambil dari API ke dalam variable nodes 
             nodes.add([{
                 id: matkul[i].kode, label: matkul[i].nama, group: matkul[i].semester, 
                 x:horizontal[matkul[i].semester], y: matkul[i].semester*150, shape:shape 
             }])
-
+            
+            //meembedakan garis sesuai dengan prasyaratnya
             if(matkul[i].prasyarat.tempuh.length != 0){
                 for (let j = 0; j < matkul[i].prasyarat.tempuh.length; j++){
                     edges.add([
@@ -79,15 +90,16 @@ function processNetwork (){
     }
     fetchUsers();
 
-    // create a network
+    //mengambil elemen dari html untuk dijadikan tempat visualisasi
     var container = document.getElementById('network');
 
-    // provide the data in the vis format
+    //mengatur data yang akan dipakai agar sesuai format visjs
     var data = {
         nodes: nodes,
         edges: edges
     };
 
+    //mengatur opsi tambahan untuk visualisasi
     var options = {
         nodes: {
             margin: 10,
@@ -101,6 +113,6 @@ function processNetwork (){
         },
     };
 
-    // initialize your network!
+    //memulai visualisasi sesuai dengan data yang telah diatur
     var network = new vis.Network(container, data, options);
 }
