@@ -1,3 +1,7 @@
+//mencetak nomor versi electron ke halaman web
+
+//mengakses objek process.versions node.js yang menjalankan fungsi replaceText
+//untuk memasukkan nomor versi ke dalam dokumen html
 window.addEventListener('DOMContentLoaded', () => {
   const replaceText = (selector, text) => {
     const element = document.getElementById(selector)
